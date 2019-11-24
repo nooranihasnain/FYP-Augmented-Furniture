@@ -12,10 +12,14 @@ public class UIScript : MonoBehaviour
 
     public GameObject[] FurnitureButtons;
     private GameObject SelectedChoice;
+
+    public int CurrentSelection = 0;
+    public Color SelectionColor;
+    public Color ButtonColor;
     // Start is called before the first frame update
     void Start()
     {
-        
+        SwitchSelection(CurrentSelection);
     }
 
     // Update is called once per frame
@@ -44,5 +48,12 @@ public class UIScript : MonoBehaviour
             WindowAnimator.Play("Close");
             IsOpen = false;
         }
+    }
+
+    public void SwitchSelection(int Index)
+    {
+        FurnitureButtons[CurrentSelection].GetComponent<Image>().color = ButtonColor;
+        CurrentSelection = Index;
+        FurnitureButtons[Index].GetComponent<Image>().color = SelectionColor;
     }
 }
