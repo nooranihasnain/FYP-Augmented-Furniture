@@ -11,6 +11,7 @@ public class UIScript : MonoBehaviour
     public GameObject CloseButton;
 
     public GameObject[] FurnitureButtons;
+    public GameObject[] FurnitureMenu;
     private GameObject SelectedChoice;
 
     public int CurrentSelection = 0;
@@ -26,6 +27,14 @@ public class UIScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void DeactivateAll()
+    {
+        for (int i = 0; i < FurnitureMenu.Length; i++)
+        {
+            FurnitureMenu[i].SetActive(false);
+        }
     }
 
     public void OpenWindow()
@@ -55,5 +64,7 @@ public class UIScript : MonoBehaviour
         FurnitureButtons[CurrentSelection].GetComponent<Image>().color = ButtonColor;
         CurrentSelection = Index;
         FurnitureButtons[Index].GetComponent<Image>().color = SelectionColor;
+        DeactivateAll();
+        FurnitureMenu[CurrentSelection].SetActive(true);
     }
 }
