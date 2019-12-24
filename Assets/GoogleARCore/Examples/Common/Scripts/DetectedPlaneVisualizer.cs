@@ -85,7 +85,8 @@ namespace GoogleARCore.Examples.Common
         public void Initialize(DetectedPlane plane)
         {
             m_DetectedPlane = plane;
-            m_MeshRenderer.material.SetColor("_GridColor", Color.white);
+            Color newCol = new Color(1f, 1f, 1f, 0.2f);
+            m_MeshRenderer.material.SetColor("_GridColor", newCol);
             m_MeshRenderer.material.SetFloat("_UvRotation", Random.Range(0.0f, 360.0f));
 
             Update();

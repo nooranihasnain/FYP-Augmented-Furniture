@@ -23,6 +23,8 @@ namespace GoogleARCore.Examples.Common
     using System.Collections.Generic;
     using GoogleARCore;
     using UnityEngine;
+    using UnityEngine.UI;
+    using GoogleARCore.Examples.HelloAR;
 
     /// <summary>
     /// Manages the visualization of detected planes in the scene.
@@ -38,7 +40,7 @@ namespace GoogleARCore.Examples.Common
         /// A list to hold new planes ARCore began tracking in the current frame. This object is
         /// used across the application to avoid per-frame allocations.
         /// </summary>
-        private List<DetectedPlane> m_NewPlanes = new List<DetectedPlane>();
+        public List<DetectedPlane> m_NewPlanes = new List<DetectedPlane>();
 
         /// <summary>
         /// The Unity Update method.
