@@ -1,5 +1,5 @@
 
-namespace GoogleARCore.Examples.HelloAR
+namespace GoogleARCore.Examples.ObjectManipulation
 {
     using System.Collections.Generic;
     using GoogleARCore;
@@ -15,13 +15,18 @@ namespace GoogleARCore.Examples.HelloAR
     /// <summary>
     /// Controls the HelloAR example.
     /// </summary>
-    public class FurnitureManager : MonoBehaviour
+    public class FurnitureManager : Manipulator
     {
         /// <summary>
         /// The first-person camera being used to render the passthrough camera image (i.e. AR
         /// background).
         /// </summary>
         public Camera FirstPersonCamera;
+
+        /// <summary>
+        /// The Manipulator prefab to attach to object.
+        /// </summary>
+        public GameObject ManipulatorPrefab;
 
         /// <summary>
         /// The rotation in degrees need to apply to prefab when it is placed.
@@ -104,12 +109,22 @@ namespace GoogleARCore.Examples.HelloAR
                 // camera).
                 gameObject.transform.Rotate(0, k_PrefabRotation, 0, Space.Self);
 
+                //Instantiate Manupulator
+                var manipulator = Instantiate(ManipulatorPrefab, hit.Pose.position, hit.Pose.rotation);
+
+                // Make game object a child of the manipulator.
+                gameObject.transform.parent = manipulator.transform;
+
                 // Create an anchor to allow ARCore to track the hitpoint as understanding of
                 // the physical world evolves.
                 var anchor = hit.Trackable.CreateAnchor(hit.Pose);
 
-                // Make game object a child of the anchor.
-                gameObject.transform.parent = anchor.transform;
+                // Make manipulator a child of the anchor.
+                manipulator.transform.parent = anchor.transform;
+
+                // Select the placed object.
+                manipulator.GetComponent<Manipulator>().Select();
+
             }
         }
         /// <summary>

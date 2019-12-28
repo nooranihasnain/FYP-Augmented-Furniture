@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4104886181238264265}
   m_LocalRotation: {x: 0.70710677, y: -0, z: -0, w: 0.7071069}
   m_LocalPosition: {x: 0, y: -2.6666667, z: 0}
-  m_LocalScale: {x: 6.666666, y: 6.6666694, z: 6.6666694}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 4895655226274780047}
   m_RootOrder: 6
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 4895655226274780033}
   - component: {fileID: 4895655226273485735}
   - component: {fileID: 4895655226272485735}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 4895655226274780037}
   - component: {fileID: 4895655226273485739}
   - component: {fileID: 4895655226272485739}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 4895655226274780039}
   - component: {fileID: 4895655226273485733}
   - component: {fileID: 4895655226272485733}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 4895655226274780041}
   - component: {fileID: 4895655226273485743}
   - component: {fileID: 4895655226272485743}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +396,7 @@ GameObject:
   - component: {fileID: 4895655226274780043}
   - component: {fileID: 4895655226273485737}
   - component: {fileID: 4895655226272485737}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -473,7 +473,7 @@ GameObject:
   - component: {fileID: 4895655226274780045}
   - component: {fileID: 4895655226273485741}
   - component: {fileID: 4895655226272485741}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -549,11 +549,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4895655226274780047}
   - component: {fileID: 2069916908261905012}
-  - component: {fileID: 11589644651479507}
-  - component: {fileID: 4503041451362366686}
-  - component: {fileID: 5536476590197955760}
-  - component: {fileID: 6634152013269763971}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cupboard1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -594,102 +590,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.5699117, y: 5.7115035, z: 1.5235002}
   m_Center: {x: 0.00000019868214, y: 0.023795167, z: -0.023795491}
---- !u!114 &11589644651479507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4895655226274680751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eda371e5375f454490a86f21559ee38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Use:
-    Filter: 0
-    IgnoreStartedOverGui: 1
-    RequiredFingerCount: 1
-    RequiredMouseButtons: 0
-    RequiredSelectable: {fileID: 0}
-  Camera: {fileID: 0}
-  Dampening: -1
-  remainingTranslation: {x: 0, y: 0, z: 0}
---- !u!114 &4503041451362366686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4895655226274680751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc7c91b26689a054d88448aba6dfe424, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Use:
-    Filter: 0
-    IgnoreStartedOverGui: 1
-    RequiredFingerCount: 2
-    RequiredMouseButtons: 0
-    RequiredSelectable: {fileID: 0}
-  Axis: {x: 0, y: -1, z: 0}
-  Space: 1
---- !u!114 &5536476590197955760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4895655226274680751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c73c1ab94e28d244827af556dca1ed2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Use:
-    Filter: 0
-    IgnoreStartedOverGui: 1
-    RequiredFingerCount: 2
-    RequiredMouseButtons: 0
-    RequiredSelectable: {fileID: 0}
-  Camera: {fileID: 0}
-  Relative: 0
-  Dampening: -1
-  remainingScale: {x: 0, y: 0, z: 0}
---- !u!114 &6634152013269763971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4895655226274680751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83dcd8dace8b7fe449d796b980cb121d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DeselectOnUp: 1
-  HideWithFinger: 0
-  IsolateSelectingFingers: 0
-  onSelect:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Lean.Touch.LeanSelectable+LeanFingerEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onSelectSet:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Lean.Touch.LeanSelectable+LeanFingerEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onSelectUp:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Lean.Touch.LeanSelectable+LeanFingerEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onDeselect:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  isSelected: 0

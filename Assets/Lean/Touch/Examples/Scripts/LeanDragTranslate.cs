@@ -63,6 +63,7 @@ namespace Lean.Touch
 
 			// Calculate the screenDelta value based on these fingers
 			var screenDelta = LeanGesture.GetScreenDelta(fingers);
+            //screenDelta.y = 0f;
 
 			if (screenDelta != Vector2.zero)
 			{
