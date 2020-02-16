@@ -25,6 +25,11 @@ namespace Lean.Touch
 		[Tooltip("If you want this component to change smoothly over time, then this allows you to control how quick the changes reach their target value.\n\n-1 = Instantly change.\n\n1 = Slowly change.\n\n10 = Quickly change.")]
 		public float Dampening = -1.0f;
 
+		/// <summary>This allows you to control how much momenum is retained when the dragging fingers are all released.</summary>
+		[Tooltip("This allows you to control how much momenum is retained when the dragging fingers are all released.")]
+		[Range(0.0f, 1.0f)]
+		public float Inertia;
+
 		[HideInInspector]
 		[SerializeField]
 		private Vector3 remainingDelta;
@@ -105,6 +110,11 @@ namespace Lean.Touch
 
 			// Add to remainingDelta
 			remainingDelta += transform.localPosition - oldPosition;
+
+			if (fingers.Count == 0 && Inertia > 0.0f && Dampening > 0.0f)
+			{
+				remainingDelta += remainingDelta * Inertia * Dampening * Time.deltaTime;
+			}
 
 			// Get t value
 			var factor = LeanTouch.GetDampenFactor(Dampening, Time.deltaTime);

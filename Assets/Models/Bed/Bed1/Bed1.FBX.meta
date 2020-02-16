@@ -5,34 +5,40 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: chrome08_210
-    2100002: wood_liq
-    2100004: Leather_besh_3
-    2100006: Leather_besh
+    2100000: Legs
+    2100002: CushionsAndMattress
+    2100004: Blanket
+    2100006: Front
+    2100008: BackAndBase
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Sphere01
+    4300000: 3dstylish-fbde01
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Leather_besh
-    second: {fileID: 2100000, guid: 9bfc74d591fdf404e9247f2a0b111421, type: 2}
+      name: BackAndBase
+    second: {fileID: 2100000, guid: 3e028e3fc7afc48469c41f76ca0f2f8d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Leather_besh_3
-    second: {fileID: 2100000, guid: 9bfc74d591fdf404e9247f2a0b111421, type: 2}
+      name: Blanket
+    second: {fileID: 2100000, guid: f5c7439338709f748b91ec5492c63177, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: chrome08_210
-    second: {fileID: 2100000, guid: 367abd4eb692df242b6dcee7b6b85db4, type: 2}
+      name: CushionsAndMattress
+    second: {fileID: 2100000, guid: d65ea1b0259ce9444a3b5dad61863068, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: wood_liq
-    second: {fileID: 2100000, guid: 367abd4eb692df242b6dcee7b6b85db4, type: 2}
+      name: Front
+    second: {fileID: 2100000, guid: 67a1c3fd4dbe04e44a70807a09379cfe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Legs
+    second: {fileID: 2100000, guid: 0ceaf21ea1b14f94d8f697d3ff58ca7f, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

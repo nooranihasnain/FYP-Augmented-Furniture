@@ -3,42 +3,17 @@ guid: cc70780016d4f2646a2bab748e9aa402
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Box23
-    100002: //RootNode
-    100004: Plane07
-    100006: Plane08
-    100008: Plane09
-    100010: Sphere10
-    100012: Sphere11
-    400000: Box23
-    400002: //RootNode
-    400004: Plane07
-    400006: Plane08
-    400008: Plane09
-    400010: Sphere10
-    400012: Sphere11
-    2100000: st_wood1
-    2100002: mat_steklo
-    2100004: yellow1
-    2100006: st_gold9
-    2300000: Box23
-    2300002: Plane07
-    2300004: Plane08
-    2300006: Plane09
-    2300008: Sphere10
-    2300010: Sphere11
-    3300000: Box23
-    3300002: Plane07
-    3300004: Plane08
-    3300006: Plane09
-    3300008: Sphere10
-    3300010: Sphere11
-    4300000: Box23
-    4300002: Plane07
-    4300004: Plane08
-    4300006: Sphere10
-    4300008: Sphere11
-    4300010: Plane09
+    100000: //RootNode
+    100002: Sphere10
+    400000: //RootNode
+    400002: Sphere10
+    2100000: st_gold9
+    2100002: st_wood1
+    2100004: mat_steklo
+    2100006: yellow1
+    2300000: Sphere10
+    3300000: Sphere10
+    4300000: Sphere10
   externalObjects:
   - first:
       type: UnityEngine:Material

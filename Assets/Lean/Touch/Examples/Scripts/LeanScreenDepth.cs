@@ -175,12 +175,9 @@ namespace Lean.Touch
 						if (path != null)
 						{
 							var ray = camera.ScreenPointToRay(screenPoint);
-							var hit = default(Vector3);
 
-							if (path.TryGetClosest(ray, ref hit, path.Smoothing) == true)
+							if (path.TryGetClosest(ray, ref position, -1, Distance * Time.deltaTime) == true)
 							{
-								position = hit;
-
 								LastWorldNormal = LeanPath.LastWorldNormal;
 
 								return true;
@@ -276,7 +273,7 @@ namespace Lean.Touch
 				case LeanScreenDepth.ConversionType.DepthIntercept:  height += step * 2; break;
 				case LeanScreenDepth.ConversionType.PhysicsRaycast:  height += step * 3; break;
 				case LeanScreenDepth.ConversionType.PlaneIntercept:  height += step * 3; break;
-				case LeanScreenDepth.ConversionType.PathClosest:     height += step * 2; break;
+				case LeanScreenDepth.ConversionType.PathClosest:     height += step * 3; break;
 				case LeanScreenDepth.ConversionType.AutoDistance:    height += step * 2; break;
 				case LeanScreenDepth.ConversionType.HeightIntercept: height += step * 2; break;
 			}
@@ -332,6 +329,7 @@ namespace Lean.Touch
 					case LeanScreenDepth.ConversionType.PathClosest:
 					{
 						DrawObjectProperty<LeanPath>(ref rect, property, "Path");
+						DrawProperty(ref rect, property, label, "Distance", "Max Delta", "The maximum amount of segments that can be moved between.");
 					}
 					break;
 

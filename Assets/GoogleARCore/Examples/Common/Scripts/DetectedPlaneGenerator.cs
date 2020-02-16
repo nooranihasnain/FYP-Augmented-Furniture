@@ -61,9 +61,11 @@ namespace GoogleARCore.Examples.Common
                 // Instantiate a plane visualization prefab and set it to track the new plane. The
                 // transform is set to the origin with an identity rotation since the mesh for our
                 // prefab is updated in Unity World coordinates.
+                Vector3 oneCentimeterUp = Vector3.up * 0.02f;
                 GameObject planeObject =
                     Instantiate(DetectedPlanePrefab, Vector3.zero, Quaternion.identity, transform);
                 planeObject.GetComponent<DetectedPlaneVisualizer>().Initialize(m_NewPlanes[i]);
+               planeObject.transform.Translate(oneCentimeterUp, Space.Self);
             }
         }
     }

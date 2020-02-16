@@ -14,7 +14,8 @@ namespace Lean.Touch
 			Manually = -1,
 			Raycast3D,
 			Overlap2D,
-			CanvasUI
+			CanvasUI,
+			ScreenDistance
 		}
 
 		public enum SearchType
@@ -75,8 +76,16 @@ namespace Lean.Touch
 		[Tooltip("Automatically deselect everything if nothing was selected?")]
 		public bool AutoDeselect;
 
+		/// <summary>When using the <b>ScreenDistance</b> selection mode, this allows you to set how many scaled pixels from the mouse/finger you can select.</summary>
+		[Tooltip("When using the ScreenDistance selection mode, this allows you to set how many scaled pixels from the mouse/finger you can select.")]
+		public float MaxScreenDistance = 50;
+
 		[System.NonSerialized]
 		private LinkedListNode<LeanSelect> node;
+
+		private static RaycastHit[] raycastHits = new RaycastHit[1024];
+
+		private static RaycastHit2D[] raycastHit2Ds = new RaycastHit2D[1024];
 
 		// NOTE: This must be called from somewhere
 		public void SelectStartScreenPosition(LeanFinger finger)
@@ -122,12 +131,12 @@ namespace Lean.Touch
 
 					if (camera != null)
 					{
-						var ray = camera.ScreenPointToRay(screenPosition);
-						var hit = default(RaycastHit);
+						var ray   = camera.ScreenPointToRay(screenPosition);
+						var count = Physics.RaycastNonAlloc(ray, raycastHits, float.PositiveInfinity, LayerMask);
 
-						if (Physics.Raycast(ray, out hit, float.PositiveInfinity, LayerMask) == true)
+						if (count > 0)
 						{
-							component = hit.collider;
+							component = raycastHits[0].transform;
 						}
 					}
 					else
@@ -144,9 +153,13 @@ namespace Lean.Touch
 
 					if (camera != null)
 					{
-						var point = camera.ScreenToWorldPoint(screenPosition);
+						var ray   = camera.ScreenPointToRay(screenPosition);
+						var count = Physics2D.GetRayIntersectionNonAlloc(ray, raycastHit2Ds, float.PositiveInfinity, LayerMask);
 
-						component = Physics2D.OverlapPoint(point, LayerMask);
+						if (count > 0)
+						{
+							component = raycastHit2Ds[0].transform;
+						}
 					}
 					else
 					{
@@ -165,7 +178,47 @@ namespace Lean.Touch
 					}
 				}
 				break;
+
+				case SelectType.ScreenDistance:
+				{
+					var bestDistance = MaxScreenDistance * LeanTouch.ScalingFactor;
+
+					bestDistance *= bestDistance;
+
+					// Make sure the camera exists
+					var camera = LeanTouch.GetCamera(Camera, gameObject);
+
+					if (camera != null)
+					{
+						foreach (var selectable in LeanSelectable.Instances)
+						{
+							var distance = Vector2.SqrMagnitude(GetScreenPoint(camera, selectable.transform) - screenPosition);
+
+							if (distance <= bestDistance)
+							{
+								bestDistance = distance;
+								component    = selectable;
+							}
+						}
+					}
+				}
+				break;
 			}
+		}
+
+		private static Vector2 GetScreenPoint(Camera camera, Transform transform)
+		{
+			if (transform is RectTransform)
+			{
+				var canvas = transform.GetComponentInParent<Canvas>();
+
+				if (canvas != null && canvas.renderMode == RenderMode.ScreenSpaceOverlay)
+				{
+					return RectTransformUtility.WorldToScreenPoint(null, transform.position);
+				}
+			}
+
+			return camera.WorldToScreenPoint(transform.position);
 		}
 
 		public void Select(LeanFinger finger, Component component)

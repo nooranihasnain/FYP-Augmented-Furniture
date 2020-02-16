@@ -63,7 +63,6 @@ namespace Lean.Touch
 
 			// Calculate the screenDelta value based on these fingers
 			var screenDelta = LeanGesture.GetScreenDelta(fingers);
-            //screenDelta.y = 0f;
 
 			if (screenDelta != Vector2.zero)
 			{
@@ -96,7 +95,17 @@ namespace Lean.Touch
 
 		private void TranslateUI(Vector2 screenDelta)
 		{
-			var camera = LeanTouch.GetCamera(Camera, gameObject);
+			var camera = Camera;
+
+			if (camera == null)
+			{
+				var canvas = transform.GetComponentInParent<Canvas>();
+
+				if (canvas != null && canvas.renderMode != RenderMode.ScreenSpaceOverlay)
+				{
+					camera = canvas.worldCamera;
+				}
+			}
 
 			// Screen position of the transform
 			var screenPoint = RectTransformUtility.WorldToScreenPoint(camera, transform.position);

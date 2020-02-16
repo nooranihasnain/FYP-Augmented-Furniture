@@ -122,6 +122,10 @@ namespace GoogleARCore.Examples.ObjectManipulation
                 // Make manipulator a child of the anchor.
                 manipulator.transform.parent = anchor.transform;
 
+                //Add script to anchor
+                anchor.gameObject.AddComponent<AnchorScript>();
+                anchor.gameObject.GetComponent<AnchorScript>().ChildObj = manipulator.gameObject;
+
                 // Select the placed object.
                 manipulator.GetComponent<Manipulator>().Select();
 
