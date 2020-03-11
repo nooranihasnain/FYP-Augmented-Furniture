@@ -15,8 +15,6 @@ public class UIScript : MonoBehaviour
     public bool IsOpenRight = false;
     public Animator LeftBarAnimator;
     public Animator RightBarAnimator;
-    public GameObject OpenButtonLeft;
-    public GameObject CloseButtonLeft;
     public GameObject OpenButtonRight;
     public GameObject CloseButtonRight;
     public GameObject SnackBar;
@@ -31,9 +29,11 @@ public class UIScript : MonoBehaviour
     public Color ButtonColor;
 
     private bool IsMainMenu = false;
+    private ARCoreSession CurrSession;
     // Start is called before the first frame update
     void Start()
     {
+        CurrSession = GameObject.Find("ARCore Device").GetComponent<ARCoreSession>();
         SwitchSelection(CurrentSelection);
     }
 
@@ -58,12 +58,18 @@ public class UIScript : MonoBehaviour
             if(IsMainMenu)
             {
                 PlaneGenerator.gameObject.SetActive(false);
+                //Pause Plane detection
+                CurrSession.SessionConfig.EnablePlaneFinding = false;
+                CurrSession.OnEnable();
                 CompleteMenu.SetActive(true);
                 ScanningFloorMenu.SetActive(false);
             }
             else
             {
                 PlaneGenerator.gameObject.SetActive(true);
+                //Resume plane detection
+                CurrSession.SessionConfig.EnablePlaneFinding = true;
+                CurrSession.OnEnable();
                 CompleteMenu.SetActive(false);
                 ScanningFloorMenu.SetActive(true);
             }
@@ -107,29 +113,6 @@ public class UIScript : MonoBehaviour
             CloseButtonRight.SetActive(false);
             RightBarAnimator.Play("Close");
             IsOpenRight = false;
-        }
-    }
-
-    public void OpenLeftWindow()
-    {
-        if(!IsOpenLeft)
-        {
-            OpenButtonLeft.SetActive(false);
-            CloseButtonLeft.SetActive(true);
-            LeftBarAnimator.Play("Open");
-            IsOpenLeft = true;
-        }
-    }
-
-
-    public void CloseLeftWindow()
-    {
-        if(IsOpenLeft)
-        {
-            OpenButtonLeft.SetActive(true);
-            CloseButtonLeft.SetActive(false);
-            LeftBarAnimator.Play("Close");
-            IsOpenLeft = false;
         }
     }
 

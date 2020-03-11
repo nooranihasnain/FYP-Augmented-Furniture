@@ -1,4 +1,5 @@
 using UnityEngine;
+using GoogleARCore.Examples.ObjectManipulation;
 
 namespace Lean.Touch
 {
@@ -31,5 +32,15 @@ namespace Lean.Touch
 		{
 			Destroy(gameObject);
 		}
+
+        //Customized Destroy function to destroy manipulator 
+        public void DestroyFurniture()
+        {
+            FurnitureManager FM = GameObject.FindWithTag("FurnitureManager").GetComponent<FurnitureManager>();
+            FurnitureScript FS = this.gameObject.GetComponent<FurnitureScript>();
+            FM.SpawnedFurnitures.Remove(FS);
+            Destroy(gameObject.transform.parent);
+            Destroy(this.gameObject);
+        }
 	}
 }

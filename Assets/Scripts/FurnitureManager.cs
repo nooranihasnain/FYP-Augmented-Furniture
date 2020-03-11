@@ -6,6 +6,7 @@ namespace GoogleARCore.Examples.ObjectManipulation
     using GoogleARCore.Examples.Common;
     using UnityEngine;
     using UnityEngine.EventSystems;
+    using UnityEngine.UI;
 
 #if UNITY_EDITOR
     // Set up touch input propagation while using Instant Preview in the editor.
@@ -40,6 +41,16 @@ namespace GoogleARCore.Examples.ObjectManipulation
         private bool m_IsQuitting = false;
 
         /// <summary>
+        /// A list of all spawned furniture for this session
+        /// </summary>
+        public List<FurnitureScript> SpawnedFurnitures { get; set; }
+
+        /// <summary>
+        /// Prefab for Checkout menu
+        /// </summary>
+        public GameObject CheckoutMenuPrefab;
+        
+        /// <summary>
         /// The Unity Awake() method.
         /// </summary>
         public void Awake()
@@ -47,6 +58,7 @@ namespace GoogleARCore.Examples.ObjectManipulation
             // Enable ARCore to target 60fps camera capture frame rate on supported devices.
             // Note, Application.targetFrameRate is ignored when QualitySettings.vSyncCount != 0.
             Application.targetFrameRate = 60;
+            SpawnedFurnitures = new List<FurnitureScript>();
         }
 
         /// <summary>
@@ -55,7 +67,6 @@ namespace GoogleARCore.Examples.ObjectManipulation
         public void Update()
         {
             _UpdateApplicationLifecycle();
-
             // If the player has not touched the screen, we are done with this update.
         }
 
@@ -104,6 +115,8 @@ namespace GoogleARCore.Examples.ObjectManipulation
                 //Original code
                 // Instantiate prefab at the hit pose.
                 var gameObject = Instantiate(prefab, hit.Pose.position, hit.Pose.rotation);
+                FurnitureScript InstantiatedFS = gameObject.GetComponent<FurnitureScript>();
+                SpawnedFurnitures.Add(InstantiatedFS);
 
                 // Compensate for the hitPose rotation facing away from the raycast (i.e.
                 // camera).
@@ -172,6 +185,16 @@ namespace GoogleARCore.Examples.ObjectManipulation
                 m_IsQuitting = true;
                 Invoke("_DoQuit", 0.5f);
             }
+        }
+
+
+        /// <summary>
+        /// Function to spawn the window
+        /// </summary>
+        public void ShowCheckoutMenu()
+        {
+            GameObject CMenu = Instantiate(CheckoutMenuPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            CMenu.transform.SetParent(GameObject.FindWithTag("MainCanvas").transform, false);
         }
 
         /// <summary>

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - ReferencePlane
+  - ManipulationSystem
+  - FurnitureManager
+  - MainCanvas
   layers:
   - Default
   - TransparentFX
