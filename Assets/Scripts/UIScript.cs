@@ -5,6 +5,8 @@ using UnityEngine.Video;
 using UnityEngine.UI;
 using GoogleARCore;
 using GoogleARCore.Examples.Common;
+using UnityEngine.VR;
+using UnityEngine.XR;
 
 public class UIScript : MonoBehaviour
 {
@@ -30,7 +32,12 @@ public class UIScript : MonoBehaviour
 
     private bool IsMainMenu = false;
     private ARCoreSession CurrSession;
-    // Start is called before the first frame update
+
+    //MR Stuff
+    public GameObject MRRender;
+    public GameObject ARRender;
+    public GameObject ARCanvas;
+    public GameObject MRCanvas;
     void Start()
     {
         CurrSession = GameObject.Find("ARCore Device").GetComponent<ARCoreSession>();
@@ -123,5 +130,30 @@ public class UIScript : MonoBehaviour
         FurnitureButtons[Index].GetComponent<Image>().color = SelectionColor;
         DeactivateAll();
         FurnitureMenu[CurrentSelection].SetActive(true);
+    }
+
+    IEnumerator LoadDevice (string DeviceName, bool enable)
+    {
+        XRSettings.LoadDeviceByName(DeviceName);
+        yield return null;
+        XRSettings.enabled = enable;
+    }
+
+    public void DisableVR()
+    {
+        //StartCoroutine(LoadDevice("", false));
+        ARRender.SetActive(true);
+        MRRender.SetActive(false);
+        ARCanvas.SetActive(true);
+        MRCanvas.SetActive(false);
+    }
+
+    public void EnableVR()
+    {
+        //StartCoroutine(LoadDevice("cardboard", true));
+        ARRender.SetActive(false);
+        MRRender.SetActive(true);
+        ARCanvas.SetActive(false);
+        MRCanvas.SetActive(true);
     }
 }
