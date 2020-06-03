@@ -340,9 +340,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PriceText: {fileID: 755418305747493382}
-  Price: 100
+  Price: 35
   RenderImage: {fileID: 21300000, guid: aa731c06d0b95e540b6641d4e82400bd, type: 3}
-  FurnitureName: Chair 5
+  FurnitureName: White Office Chair
 --- !u!1 &5687798848275389209
 GameObject:
   m_ObjectHideFlags: 0

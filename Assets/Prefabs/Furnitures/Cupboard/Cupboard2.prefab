@@ -317,9 +317,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PriceText: {fileID: 1280174804125492592}
-  Price: 100
+  Price: 40
   RenderImage: {fileID: 21300000, guid: 9c97ee3f195ca2f4cb394d633b950527, type: 3}
-  FurnitureName: Cupboard 2
+  FurnitureName: Cherrywood Cupboard
 --- !u!1 &7868927514541015437
 GameObject:
   m_ObjectHideFlags: 0

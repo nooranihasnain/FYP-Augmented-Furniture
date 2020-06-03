@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using GoogleARCore;
 using GoogleARCore.Examples.Common;
 using UnityEngine.VR;
+using UnityEngine.SceneManagement;
 using UnityEngine.XR;
 
 public class UIScript : MonoBehaviour
@@ -42,6 +43,7 @@ public class UIScript : MonoBehaviour
     {
         CurrSession = GameObject.Find("ARCore Device").GetComponent<ARCoreSession>();
         SwitchSelection(CurrentSelection);
+        Screen.orientation = ScreenOrientation.Landscape;
     }
 
     // Update is called once per frame
@@ -146,6 +148,11 @@ public class UIScript : MonoBehaviour
         MRRender.SetActive(false);
         ARCanvas.SetActive(true);
         MRCanvas.SetActive(false);
+    }
+
+    public void LoadScene(string LevelName)
+    {
+        SceneManager.LoadScene(LevelName);
     }
 
     public void EnableVR()

@@ -263,9 +263,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PriceText: {fileID: 7552132509909387902}
-  Price: 100
+  Price: 40
   RenderImage: {fileID: 21300000, guid: c8bb20dae57250341a67cb6074979f5d, type: 3}
-  FurnitureName: Bed 2
+  FurnitureName: Faulkner Bed
 --- !u!1 &6437039813535000278
 GameObject:
   m_ObjectHideFlags: 0

@@ -241,9 +241,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PriceText: {fileID: 3268002517499436112}
-  Price: 100
+  Price: 50
   RenderImage: {fileID: 21300000, guid: 9b505be8797abd444aee8098331baf73, type: 3}
-  FurnitureName: Chair 4
+  FurnitureName: Rolling Office Chair
 --- !u!1 &2762015054302246374
 GameObject:
   m_ObjectHideFlags: 0

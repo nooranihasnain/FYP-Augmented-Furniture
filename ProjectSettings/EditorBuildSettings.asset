@@ -11,4 +11,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ARCoreScene.unity
     guid: fd58196ab6456f740bd551fda1d7d04d
+  - enabled: 1
+    path: Assets/Scenes/ARCoreSceneSet1.unity
+    guid: 84c4d83bac2cfca44b589215f0138ba5
+  - enabled: 1
+    path: Assets/Scenes/ARCoreSceneSet2.unity
+    guid: 4a771d28c17eb684dad35aca081e2d29
+  - enabled: 1
+    path: Assets/Scenes/ARCoreSceneSet3.unity
+    guid: 19c8b584ce32b4f488241d77b644dbd7
+  - enabled: 1
+    path: Assets/Scenes/ARCoreSceneSet4.unity
+    guid: 1ffc360cca9eac242abc27ad87e7ecc4
   m_configObjects: {}
